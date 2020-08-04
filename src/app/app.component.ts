@@ -9,6 +9,7 @@ import {Satellite} from './satellite';
 export class AppComponent {
   title = 'orbit-report';
   sourceList: Satellite[];
+  
   constructor() {
     this.sourceList = [];
     let satellitesUrl = 'https://handlers.education.launchcode.org/static/satellites.json';
@@ -18,9 +19,18 @@ export class AppComponent {
  
           let fetchedSatellites = data.satellites;
           for (let i:number=0; i<fetchedSatellites.length;i++){
+            
             let satellite = new Satellite (fetchedSatellites[i].name, fetchedSatellites[i].type, fetchedSatellites[i].launchDate, fetchedSatellites[i].orbitType, fetchedSatellites[i].operational);
             this.sourceList.push(satellite);
+            
+            //  let shouldWarning:boolean;
+            //  shouldWarning = fetchedSatellites[i].shouldShowWarning();
+              
           }
+          // for(let j:number=0; j<fetchedSatellites.length;j++){
+          // let showWarning :boolean  = fetchedSatellites[j].shouldShowWarning();
+          // };
+
        }.bind(this));
     }.bind(this));
  
